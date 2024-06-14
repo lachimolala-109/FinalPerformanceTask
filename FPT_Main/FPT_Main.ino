@@ -5,17 +5,13 @@
 #define GL1 9
 #define GL2 8
 
-unsigned long previousMillis = 0;
-const long interval = 1000; // Interval in milliseconds
-
-int state1 = 0; // 0: red, 1: yellow, 2: green
-int state2 = 2; // 0: red, 1: yellow, 2: green
-
-const unsigned long redDuration = 30000; // 30 seconds
-const unsigned long yellowDuration = 5000; // 5 seconds
-const unsigned long greenDuration = 30000; // 30 seconds
-
 unsigned long currentMillis;
+unsigned long previousMillis = 0;
+const long redDuration = 30000; // 30 seconds
+const long yellowDuration = 6000; // 6 seconds
+const long greenDuration = 30000; // 30 seconds
+int currentState = 0; // 0: Red, 1: Yellow, 2: Green
+int interval = 1000; // Check every second
 
 void setup() {
   // Serial setup
@@ -48,7 +44,7 @@ void loop() {
   // digitalWrite(GL1, LOW);
   // digitalWrite(GL2, LOW);
 
- // Update the traffic lights
+  // Update traffic lights
   currentMillis = millis();
 
   if (currentMillis - previousMillis >= interval) {
